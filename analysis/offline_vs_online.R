@@ -5,7 +5,9 @@ faz_online <- readRDS("./data/faz_online_ts.rds")
 faz_offline <- readRDS("./data/faz_offline_ts.rds")
 
 # compare offline and online publications
-ccf(bild_offline$immigration, bild_online$immigration,
-    type = "correlation")
+bild_correlation <- ccf(bild_offline$immigration, bild_online$immigration,
+                        lag.max = 5,
+                        type = "correlation")
 ccf(faz_offline$immigration, faz_online$immigration,
+    lag.max = 5,
     type = "correlation")
