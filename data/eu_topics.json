@@ -1,0 +1,113 @@
+[
+  {
+    "id": 0,
+    "topic": "None",
+    "description": "Tweet cannot be categorized according to the schema."
+  },
+  {
+    "id": 1,
+    "topic": "Macroeconomics",
+    "description": "General Macroeconomic Issues such as Inflation, Prices, and Interest Rates, Unemployment Rate, Taxation, Budget."
+  },
+  {
+    "id": 2,
+    "topic": "Civil Rights, Minority Issues and Civil Liberties",
+    "description": "Ethnic Minority and Racial Group Discrimination, Gender and Sexual Orientation Discrimination, Age Discrimination, Voting Rights and Issues, Freedom of Speech, Right to Privacy and Access to Government Information, Freedom of Religion"
+  },
+  {
+    "id": 3,
+    "topic": "Health",
+    "description": "Comprehensive Health Care Reform, Insurance, Medical Ethical Issues, Regulation of Drug Industry, Medical Devices, and Clinical Labs, Facilities Construction, Regulation, and Payments"
+  },
+  {
+    "id": 4,
+    "topic": "Agriculture and Fisheries",
+    "description": "Agricultural Subsidies, Food Inspection and Safety, Agricultural Marketing, Research, and Promotion, Animal Welfare in Agriculture, Environmental Issues in Agriculture"
+  },
+  {
+    "id": 5,
+    "topic": "Labour and Employment",
+    "description": "Worker Safety and Protection, Employment Training and Workforce Development, Employee Benefits, Employee Relations and Labour Unions, Working Conditions, Minimum Wage, Youth Employment and Child Labour, Pension Related Issues"
+  },
+  {
+    "id": 6,
+    "topic": "Education",
+    "description": "Higher Education, Elementary and Secondary Education, Education of Underprivileged Students, Vocational Education, Special Education for Disabled Students, Research and Development"
+  },
+  {
+    "id": 7,
+    "topic": "Environment",
+    "description": "Drinking Water Safety, Water Pollution and Conservation, and Water Supply, Waste Disposal, Recycling, Indoor Environmental Hazards,Forest, Species and Biodiversity Protection, Land and Water Conservation, Environmental Technological Risks, Radioactive Waste and Regulation of Dangerous Chemicals, Air and Noise Pollution, Global Warming"
+  },
+  {
+    "id": 8,
+    "topic": "Energy",
+    "description": "Nuclear Energy and Nuclear Regulatory Issues, Electricity and Hydroelectricity, Natural Gas and Oil, Coal, Alternative and Renewable Energy"
+  },
+  {
+    "id": 9,
+    "topic": "Immigration",
+    "description": "Immigrant workers, Refugees and Asylum Issues, Acquisition of Nationality, Illegal  Immigration and Repatriation, Entry of Immigrants, Integration of Immigrants, Border Control"
+  },
+  {
+    "id": 10,
+    "topic": "Transportation",
+    "description": "Mass and Public Transportation and Safety, Road and Highway Construction, Transportation, Maintenance, and Safety, Airports, Airlines, Air Traffic Control and Safety, Railroad Transportation and Safety, Maritime Issues,Transport and Safety, Public Works (Infrastructure Development)"
+  },
+  {
+    "id": 12,
+    "topic": "Law and Crime",
+    "description": "Government Departments and Agencies Dealing With Law and Crime, Illegal Drug Production, Trafficking, and Control, Court Administration, Prisons, Juvenile Crime and the Juvenile Justice System, Child Abuse and Child Pornography, Riots and Crime Prevention, Organized Crime, White Collar Crime, Criminal Code, Civil Coder, Prostitution and Human Trafficking"
+  },
+  {
+    "id": 13,
+    "topic": "Social Policy",
+    "description": "Poverty and Assistance for Low-Income Families, Elderly Issues, Elderly Assistance Programs and State Pensions, Assistance to the Disabled and Handicapped, Social Services and Volunteer Associations, Assistance to the Youth, Parental Leave and Child Care, Social Benefits for Widows and Widowers"
+  },
+  {
+    "id": 14,
+    "topic": "Regional and Urban Policy and Planning",
+    "description": "Housing and Community Development, Urban Economic Development and General Urban Issues, Rural Housing and Farming Housing Assistance Programs, Rural Economic Development, Low and Middle Income Housing Programs and Needs, Elderly and Handicapped Housing, Cohesion Policy and Structural Funds, Housing Assistance for Homeless and Homeless Issues"
+  },
+  {
+    "id": 15,
+    "topic": "Banking, Finance and Internal Trade",
+    "description": "Banking System and Financial Institution Regulation, Financial Market Regulation, Consumer Finance, Mortgages, and Credit Cards, Insurance Regulation, Debt and Bankruptcy, Intellectual Property Rights and Patents, Tourism, Consumer Protection, Sports andGambling Regulation, Creation of the Common/Single/Internal Market, Competition policy, State Aid, Corporate Governance"
+  },
+  {
+    "id": 16,
+    "topic": "Defence",
+    "description": "European Defence Industry and Defence Equipment Markets, Defence Alliances and Security Assistance (NATO), Military Intelligence, Intelligence Services, and Espionage, Military Capabilities and Coordination of Armed Services within the EU, Arms Control and Nuclear Non-Proliferation, Military Manpower and Personnel"
+  },
+  {
+    "id": 17,
+    "topic": "Space, Science, Technology and Communications",
+    "description": "Space Agencies (ESA), Commercial Use of Space, Satellites, Science Technology Transfer, International Scientific Cooperation, Telephone and Telecommunication Regulation, GDPR, Newspaper, Publishing, and Broadcast Industry Regulation (TV, Cable, Radio), Weather Forecasting and Related Issues, Oceanography, Computer Industry and Computer Security"
+  },
+  {
+    "id": 18,
+    "topic": "Foreign Trade",
+    "description": "Trade Negotiations, Disputes, and Agreements (WTO), Export Promotion and Regulation, International Private Business Investment and Corporate Development, Productivity and Competitiveness of EU Business, EU Balance of Payments, Tariff and Import Restrictions, Import Regulation, Exchange Rates and Related Issues"
+  },
+  {
+    "id": 19,
+    "topic": "International Affairs and Foreign Aid",
+    "description": "Foreign Aid, International Resources Exploitation and Resources Agreement, Developing Countries Issues, International Finance and Economic Development, Human Rights, International Organizations Other Than Finance, International Terrorism and Hijacking, EU Diplomats, EU External Service, Delegations and Offices, EU Citizens Abroad, Foreign Diplomats in the EU, Passports, EU Enlargement"
+  },
+  {
+    "id": 20,
+    "topic": "EU related issues",
+    "description": "All issues regarding the European Union."
+  },
+  {
+    "id": 21,
+    "topic": "Public Lands, Water Management and Territorial Issues",
+    "description": "National Parks, Memorials, Historic Sites, and Recreation, Natural Resources, Public Lands, and Forest Management, Water Resources Development and Research, Dependencies and Territorial Issues"
+  },
+  {
+    "id": 23,
+    "topic": "Culture and Media",
+    "description": "Audio-Visual and Performing arts, Books, Written press, Radio and television, Museums, heritage, historical monuments and archives, Protection and promotion of European culture"
+  }
+
+]
