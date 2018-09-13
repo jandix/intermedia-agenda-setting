@@ -172,3 +172,44 @@ kable(categories,
   kable_styling(latex_options = c("hold_position","scale_down"),
                 full_width = F)
 
+# PARTY VS MEAN/MEDIAN TOPICS
+party_mean <- tweets %>%
+  filter(topic != "None") %>% 
+  group_by(topic, party) %>% 
+  summarise(n = n())
+
+party_mean <- rbind(party_mean,
+                    list(topic = "Agriculture and Fisheries", party = "AfD", n = 0))
+party_mean <- rbind(party_mean,
+                    list(topic = "Banking, Finance and Internal Trade", party = "AfD", n = 0))
+party_mean <- rbind(party_mean,
+                    list(topic = "Agriculture and Fisheries", party = "CSU", n = 0))
+party_mean <- rbind(party_mean,
+                    list(topic = "Energy", party = "CSU", n = 0))
+party_mean <- rbind(party_mean,
+                    list(topic = "Environment", party = "CSU", n = 0))
+party_mean <- rbind(party_mean,
+                    list(topic = "Transportation", party = "CSU", n = 0))
+party_mean <- rbind(party_mean,
+                    list(topic = "Regional and Urban Policy and Planning", party = "CSU", n = 0))
+party_mean <- rbind(party_mean,
+                    list(topic = "Public Lands, Water Management and Territorial Issues", party = "CSU", n = 0))
+party_mean <- rbind(party_mean,
+                    list(topic = "Public Lands, Water Management and Territorial Issues", party = "SPD", n = 0))
+
+party_mean <- party_mean %>%
+  group_by(party) %>% 
+  summarise(sum = sum(n), mean = mean(n), median = median(n))
+
+party_mean <- party_mean %>% 
+  select(`Party` = party,
+         `# of tweets` = sum,
+         `Mean per topic` = mean,
+         `Median per topic` = median)
+
+# transform to tex
+kable(party_mean,
+      format = "latex",
+      booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position","scale_down"),
+                full_width = F)

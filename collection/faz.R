@@ -20,40 +20,72 @@ faz_online <- data.frame(date = timeframe,
 faz_offline <- data.frame(date = timeframe,
                           stringsAsFactors = F)
 
-## immigration ----
+## HEALTH ----
+keywords <- c("Pflege",
+              "Gesundheitssystem",
+              "Krankenversicherung",
+              "Privatversicherung",
+              "Kassenpatienten",
+              "Landarzt",
+              "Hebame")
+health <- loop_faz_archive(paste(keywords, collapse = " OR "),
+                           faz_online,
+                           faz_offline,
+                           "health")
+
+## ENERGY ----
+keywords <- c("Atomkraft",
+              "Erneuerbare",
+              "Tihange",
+              "Atomausstieg",
+              "Energiewende",
+              "Kohlekraft",
+              "Kohleausstieg")
+energy <- loop_faz_archive(paste(keywords, collapse = " OR "),
+                           faz_online,
+                           faz_offline,
+                           "energy")
+
+## IMMIGRATION ----
 
 # define key words
 keywords <- c("Flüchtlinge", 
               "Grenzkontrolle", 
               "Asyl")
-query <- paste(keywords, collapse = " OR ")
+immigration <- loop_faz_archive(paste(keywords, collapse = " OR "),
+                                faz_online,
+                                faz_offline,
+                                "immigration")
 
-# define new columns
-faz_online$immigration <- NA
-faz_offline$immigration <- NA
+## FOREIGN TRADE ----
 
-# setup progressbar
-pb <- txtProgressBar(min = 0, max = nrow(faz_online), style = 3)
+# define key words
+keywords <- c("WTO",
+              "Handelskrieg",
+              "CETA",
+              "TTIP",
+              "Handelsdefizit",
+              "Handelsüberschuss",
+              "Exportweltmeister",
+              "Zölle",
+              "Strafzölle")
+trade <- loop_faz_archive(paste(keywords, collapse = " OR "),
+                          faz_online,
+                          faz_offline,
+                          "trade")
 
-# get and count articles 
-for (i in 1:nrow(faz_online)) {
-  date <- format(faz_online$date[i], "%d.%m.%Y")
-  articles <- get_faz_archive(q = query,
-                              date = date)
-  if (is.na(articles)) {
-    faz_online$immigration[i] <- faz_offline$immigration[i] <- 0
-    next
-  }
-    
-  faz_online$immigration[i] <- articles %>% 
-    filter(source) %>% 
-    nrow()
-  faz_offline$immigration[i] <- articles %>% 
-    filter(!source) %>% 
-    nrow()
-  # update progressbar
-  setTxtProgressBar(pb, i)
-}
+# join data frames
+faz_online <- faz_online %>% 
+  left_join(health$online, by = c("date" = "date")) %>% 
+  left_join(energy$online, by = c("date" = "date")) %>% 
+  left_join(immigration$online, by = c("date" = "date")) %>% 
+  left_join(trade$online, by = c("date" = "date"))
+
+faz_offline <- faz_offline %>% 
+  left_join(health$offline, by = c("date" = "date")) %>% 
+  left_join(energy$offline, by = c("date" = "date")) %>% 
+  left_join(immigration$offline, by = c("date" = "date")) %>% 
+  left_join(trade$offline, by = c("date" = "date"))
 
 # save dataframes
 saveRDS(faz_online, "./data/faz_online.rds")

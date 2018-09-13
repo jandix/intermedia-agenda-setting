@@ -70,3 +70,46 @@ get_faz_archive <- function (q,
              source = source,
              stringsAsFactors = F)
 }
+
+loop_faz_archive <- function (query,
+                              df_online,
+                              df_offline,
+                              column_name) {
+  
+  # define new columns
+  df_online[ , column_name] <- 0
+  df_offline[ , column_name] <- 0
+  
+  # setup progressbar
+  pb <- txtProgressBar(min = 0, max = nrow(df_online), style = 3)
+  
+  # get and count articles 
+  for (i in 1:nrow(df_online)) {
+    
+    # extract date
+    date <- format(df_online$date[i], "%d.%m.%Y")
+    
+    # query archive
+    articles <- get_faz_archive(q = query,
+                                date = date)
+    
+    if (is.na(articles)) {
+      next
+    }
+    
+    df_online[i, column_name] <- articles %>% 
+      filter(source) %>% 
+      nrow()
+    df_offline[i, column_name] <- articles %>% 
+      filter(!source) %>% 
+      nrow()
+    # update progressbar
+    setTxtProgressBar(pb, i)
+  }
+  
+  # return complete data frames
+  list(
+    online = df_online,
+    offline = df_offline
+  )
+}

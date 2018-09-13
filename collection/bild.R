@@ -1,8 +1,3 @@
-# load packages
-library(readr)
-library(dplyr)
-library(stringr)
-
 # load functions
 source("./collection/helper/parse_nexis.R")
 
@@ -15,35 +10,72 @@ timeframe <- seq(from = begin,
                  to = end, 
                  by = 1)
 
-# define empty dfs
+## BILD ONLINE ----
+
+# define empty data frame
 bild_online <- data.frame(date = timeframe,
                           stringsAsFactors = F)
 
+# energy
+energy <- parse_nexis("./data/nexis/bild_online_energy.csv",
+                      column_name = "energy")
+
+# health
+health <- parse_nexis("./data/nexis/bild_online_health.csv",
+                      "health")
+
+# immigration
+immigration <- parse_nexis("./data/nexis/bild_online_immigration.csv",
+                           "immigration")
+
+# trade
+trade <- parse_nexis("./data/nexis/bild_online_trade.csv",
+                     "trade")
+
+# join data frames
+bild_online <- bild_online %>% 
+  left_join(energy, by = c("date" = "date_parsed")) %>%
+  left_join(health, by = c("date" = "date_parsed")) %>%
+  left_join(immigration, by = c("date" = "date_parsed")) %>%
+  left_join(trade, by = c("date" = "date_parsed"))
+
+# fill NAs with 0
+bild_online[is.na(bild_online)] <- 0
+
+# save data frame
+saveRDS(bild_online, "./data/bild_online.rds")
+
+## BILD OFFLINE ----
+
+# define empty data frame
 bild_offline <- data.frame(date = timeframe,
                            stringsAsFactors = F)
 
-# immigration ----
+# energy
+energy <- parse_nexis("./data/nexis/bild_offline_energy.csv",
+                      column_name = "energy")
 
-immigration_offline <- parse_nexis("./data/nexis/bild_offline_immigration.csv", 
-                                   column_name = "immigration")
+# health
+health <- parse_nexis("./data/nexis/bild_offline_health.csv",
+                      "health")
+
+# immigration
+immigration <- parse_nexis("./data/nexis/bild_offline_immigration.csv",
+                           "immigration")
+
+# trade
+trade <- parse_nexis("./data/nexis/bild_offline_trade.csv",
+                     "trade")
+
+# join data frames
 bild_offline <- bild_offline %>% 
-  left_join(immigration_offline,
-            by = c("date" = "date_parsed")) %>% 
-  rename(immigration = n)
+  left_join(energy, by = c("date" = "date_parsed")) %>%
+  left_join(health, by = c("date" = "date_parsed")) %>%
+  left_join(immigration, by = c("date" = "date_parsed")) %>%
+  left_join(trade, by = c("date" = "date_parsed"))
 
-immigration_online <- parse_nexis("./data/nexis/bild_online_immigration.csv",
-                                  column_name = "immigration")
-
-bild_online <- bild_online %>% 
-  left_join(immigration_online,
-            by = c("date" = "date_parsed")) %>% 
-  rename(immigration = n)
-
-
-# fill NAs
-bild_online[is.na(bild_online)] <- 0
+# fill NAs with 0
 bild_offline[is.na(bild_offline)] <- 0
 
-# save dataframes
-saveRDS(bild_online, "./data/bild_online.rds")
+# save data frame
 saveRDS(bild_offline, "./data/bild_offline.rds")
